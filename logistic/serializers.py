@@ -46,7 +46,9 @@ class StockSerializer(serializers.ModelSerializer):
         stock = super().update(instance, validated_data)
         # обновляем связанные таблицы
         for position in positions:
-            stock_product = StockProduct.objects.get(stock=stock, product=position["product"])
+            stock_product = StockProduct.objects.get(
+                stock=stock, product=position["product"]
+            )
             stock_product.quantity = position["quantity"]
             stock_product.price = position["price"]
             stock_product.save()

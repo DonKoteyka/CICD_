@@ -1,6 +1,6 @@
 # Create server
 ``` bash
-ssh root@79.174.92.60
+ssh root@79.174.92.142
 ```
 
 ## create user
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 pip freeze
 ```
 ``` bash
-nano main/settings.py
+nano logistic/settings.py
 ```
 ``` bash
 sudo systemctl start nginx
@@ -78,7 +78,7 @@ After=network.target
 User=kot
 Group=www-data
 WorkingDirectory=/home/kot/CICD_/ 
-ExecStart=/home/kot/CICD_/env/bin/gunicorn main.wsgi:application --workers=3 -b unix:/home/kot/CICD_/main/project.sock
+ExecStart=/home/kot/CICD_/env/bin/gunicorn main.wsgi:application --workers=3 -b unix:/home/kot/CICD_/logistic/project.sock
 [Install]
 WantedBy=multi-user.target
 ```
@@ -101,7 +101,8 @@ root /home/kot/CICD_/;
 }
 location / {
 include proxy_params;
-proxy_pass http://unix:/home/kot/CICD_/main/project.sock;
+proxy_pass http://unix:/home/kot/CICD_/logistic/project.sock;
+}
 }
 ```
 ``` bash

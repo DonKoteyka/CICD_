@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.db.models import PositiveIntegerField
 
 
 class Product(models.Model):
@@ -39,7 +40,7 @@ class StockProduct(models.Model):
         on_delete=models.CASCADE,
         related_name='positions',
     )
-    quantity = models.PositiveIntegerField(default=1)
+    quantity: PositiveIntegerField = models.PositiveIntegerField(default=1)
     price = models.DecimalField(
         max_digits=18,
         decimal_places=2,
@@ -49,5 +50,9 @@ class StockProduct(models.Model):
     class Meta:
         verbose_name_plural = 'Склад-товары'
 
+    @property
     def __str__(self):
-        return f'stock: {self.stock}/n products: {self.product}/n quantity: {self.quantity}/n price: {self.price}/n'
+        return (f'stock: {self.stock}\\n'
+                f'        products: {self.product}\\n'
+                f'        quantity: {self.quantity}\\n'
+                f'        price: {self.price}')
