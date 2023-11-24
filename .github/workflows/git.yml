@@ -7,7 +7,7 @@ jobs:
   tests:
     runs-on: ubuntu:22.04
     env:
-      SECRET: ${{secrets.}}
+      SECRET: ${{secrets}}
       DEBUG: ${{secrets.DEBUG}}
       NAME_DB: ${{secrets.NAME_DB}}
       USER_DB: ${{secrets.USER_DB}}
@@ -21,7 +21,7 @@ jobs:
           POSTGRES_PASSWORD: ${{ env.PASS_DB }}
 
         ports:
-          - 5432: 5432
+          - 5432:5432
         options:
           --health-cmd pg_isready
           --health-interval 5s
