@@ -42,8 +42,11 @@ jobs:
       - name: Линтинг
         run:  flake8 logistic --exclude  logistic/migrations/
 
-
-
-
-
-
+      - name: Тестирование
+        run: python3 manage.py test
+        env:
+          SECRET_KEY: ${{ env.SECRET }}
+          DEBUG: ${{ env.DEBUG }}
+          NAME_DB: ${{ env.NAME_DB }}
+          USER_DB: ${{ env.USER_DB }}
+          PASS_DB: ${{ env.PASS_DB }}
