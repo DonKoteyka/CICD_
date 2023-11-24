@@ -13,13 +13,12 @@ jobs:
       USER_DB: ${{ secrets.USER_DB }}
       PASS_DB: ${{ secrets.PASS_DB }}
     services:
-      postgres_db:
+      postgres_main:
         image: postgres:12
         env:
-          POSTGRES_DB: ${{ env.NAME_DB }}
-          POSTGRES_USER: ${{ env.USER_DB }}
-          POSTGRES_PASSWORD: ${{ env.PASS_DB }}
-
+          POSTGRES_DB: ${{ env.DB_NAME }}
+          POSTGRES_USER: ${{ env.DB_USER }}
+          POSTGRES_PASSWORD: ${{ env.DB_PASS }}
         ports:
           - 5432:5432
         options:
