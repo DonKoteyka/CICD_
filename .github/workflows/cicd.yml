@@ -63,7 +63,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             su kot
-            ${{ secrets.SSH_PASSWORD }}
+            ${{ secrets.SSH_PASSWORD_2 }}
             expect /home/kot/CICD_/deploy.exp
 
 
