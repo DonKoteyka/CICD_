@@ -55,6 +55,7 @@ jobs:
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DEBUG: ${{ secrets.DEBUG }}
 
+
       - name: Деплой
         uses: appleboy/ssh-action@master
         with:
